@@ -3,13 +3,13 @@ jupyterhub:
     https:
       enabled: true
       hosts:
-        - "pc-geoint.westeurope.cloudapp.azure.com"
+        - "hdcrs.westeurope.cloudapp.azure.com"
       letsencrypt:
         contactEmail: "taugspurger@microsoft.com"
     service:
       annotations:
         # Update this with your hub's name.
-        service.beta.kubernetes.io/azure-dns-label-name: "pc-geoint"
+        service.beta.kubernetes.io/azure-dns-label-name: "hdcrs"
 
   hub:
     # Disable hub network Policy, so that the dask gateway server API can reach the hub directly
@@ -41,7 +41,7 @@ jupyterhub:
   singleuser:
     image:
       name: "mcr.microsoft.com/planetary-computer/python"
-      tag: "2022.04.11.1"
+      tag: "2022.05.11.0"
     startTimeout: 1200  # 20 * 60s = 10 minutes
     cpu:
       guarantee: 1.65  # below 3.78
@@ -61,7 +61,7 @@ jupyterhub:
           command:
             [
               "/srv/conda/envs/notebook/bin/gitpuller",
-              "https://github.com/Microsoft/PlanetaryComputerExamples",
+              "https://github.com/TomAugspurger/PlanetaryComputerExamples",
               "main",
               "PlanetaryComputerExamples",
             ]
