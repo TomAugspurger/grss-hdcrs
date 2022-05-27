@@ -54,16 +54,16 @@ jupyterhub:
     storage:
       capacity: "15Gi"
 
-    defaultUrl: "/lab/tree/PlanetaryComputerExamples/README.md"
+    defaultUrl: "/lab/tree/workshop/README.md"
     lifecycleHooks:
       postStart:
         exec:
           command:
             [
               "/srv/conda/envs/notebook/bin/gitpuller",
-              "https://github.com/TomAugspurger/PlanetaryComputerExamples",
+              "https://github.com/TomAugspurger/grss-hdcrs",
               "main",
-              "PlanetaryComputerExamples",
+              "workshop"
             ]
 
     extraEnv:
